@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section id="contact">
+    <h1>contact <span>us</span> </h1>
+    <div class="details">
+        <p>Reserve a table, ask for today's special or just send us a message:</p>
+        <form action="{% url 'submitform' %}" method="post">
+        {% csrf_token %}
+        {{form}}
+            <!-- <input type="text" placeholder="enter your name" name="value1" value="{{n1}}">
+            <input type="text" placeholder="enter contact no." name="value2" value="{{n2}}">
+            <input type="number" placeholder="how many people" name="value3" value="{{n3}}">
+            <textarea name="value4" id="" cols="15" rows="5" placeholder="Message"></textarea> -->
+            <button> send message </button>
+        </form>
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even-Odd Checker</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        .heading {
+            background-color: antiquewhite;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px; /* Reduced margin for better spacing */
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Even/Odd Checker</h1>
+    <div class="container">
+        <form method="post">
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                Please Enter a Value
+            </div>
+            {% endif %}
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Enter a number:</label>
+                <input type="text" name="num1" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-primary">Check</button>
+            <br><br>
+            <div class="form-group">
+                <label>Result:</label>
+                <input type="text" value="{{c}}" class="form-control" readonly>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

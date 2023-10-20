@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% block content %}
+
+<style>
+    .search-bar {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .search-bar form {
+        display: inline-block;
+        padding: 10px;
+        background-color: #f8f8f8;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .search-bar input[type="text"] {
+        padding: 5px;
+        margin-right: 5px;
+    }
+
+    .search-bar input[type="submit"] {
+        padding: 5px 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .search-bar input[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .no-data-found {
+        text-align: center;
+        font-size: 18px;
+        color: #777;
+        margin-top: 20px;
+    }
+</style>
+
+<marquee onmouseover="stop()" onmouseout="start()">
+    {% for news in newsdata %}
+        <a href="/Newsdetails/{{news.news_slug}}">{{news.news_title}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+    {% endfor %}
+</marquee>
+
+<section class="banner" id="banner">
+    <div class="content">
+        <h2> <span>A</span>lways choose good</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi tempora tempore blanditiis
+            necessitatibus, laboriosam tenetur earum quia dignissimos rem consectetur, perferendis dolore?
+        </p>
+        <a href="#menu" class="btn">our menu</a>
+    </div>
+</section>
+
+<section id="about-us">
+    <h1>about <span>us</span></h1>
+    <div class="about-content">
+        <div class="para-content">
+            <p><span>L</span>orem ipsum dolor sit amet consectetur, adipisicing elit. Dolor reprehenderit voluptatum
+                deserunt. Alias cumque repudiandae deleniti dolores aperiam. Ullam doloribus odit quasi explicabo?
+                Cupiditate distinctio dolore itaque doloribus, deleniti obcaecati quas accusantium alias quaerat
+                minima eius nam error reprehenderit harum laborum cum asperiores ipsum fugiat quos aut veritatis
+                exercitationem quia molestiae adipisci. Impedit amet magnam fugit provident optio
+            </p>
+            <button>read more</button>
+        </div>
+        <div class="about-img">
+            <img src="/static/images/img-2.jpg" alt="">
+        </div>
+    </div>
+</section>
+
+<div class="col-12 search-bar">
+    <form method="get" id="searchForm">
+        <input type="text" name="servicename" placeholder="Search Food 😋">
+        <input type="submit" value="Search">
+    </form>
+</div>
+
+<section id="menu">
+    <h1>our <span>menu</span></h1>
+    <div class="row1">
+        {% for n in servicedata %}
+            <div class="col2">
+                <img src="{{n.service_title}}" alt="">
+                <p>{{n.service_des | safe }}</p>
+                <button>order now</button>
+            </div>
+        {% empty %}
+            <div class="no-data-found">
+                No services found.
+            </div>
+        {% endfor %}
+    </div>
+    <div class="container text-center"> <!-- Add a container and text-center class -->
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                {% if servicedata.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page={{servicedata.previous_page_number}}">Previous</a></li>
+                {% endif %}
+
+                {% for n in totalpagelist %}
+                <li class="page-item"><a class="page-link" href="/services/?page={{n}}">{{n}}</a></li>
+                {% endfor %}
+
+                {% if servicedata.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{servicedata.next_page_number}}">Next</a></li>
+                <li class="page-item"><a class="page-link" href="/services/?page={{lastpage}}">Last</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<section id="expert">
+    <h1>our chef <span>expert</span> </h1>
+    <div class="row10">
+        <div class="col10">
+            <img src="/static/images/img-9.jpg" alt="">
+            <h2> <span>j</span>ohn doe</h2>
+        </div>
+        <div class="col20">
+            <img src="/static/images/img-10.jpg" alt="">
+            <h2> <span>d</span>aniel</h2>
+        </div>
+        <div class="col20">
+            <img src="/static/images/img-11.jpg" alt="">
+            <h2> <span>d</span>aniel</h2>
+        </div>
+        <div class="col30">
+            <img src="/static/images/img-12.jpg" alt="">
+            <h2> <span>j</span>ohny</h2>
+        </div>
+    </div>
+</section>
+
+<section id="reviews">
+    <h1>some<span> reviews</span> </h1>
+    <div class="people-reviews">
+        <div class="first-review">
+            <img src="/static/images/review-img1.jpg" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste soluta sequi quaerat iure.
+            </p>
+            <div class="review-icon">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+
+        <div class="second-review">
+            <img src="/static/images/review-img2.jpg" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste soluta sequi quaerat iure.
+            </p>
+            <div class="review-icon">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+
+        <div class="third-review">
+            <img src="/static/images/review-img3.jpg" alt="">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste  soluta sequi quaerat iure.
+            </p>
+            <div class="review-icon">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h1>contact <span>us</span> </h1>
+    <div class="details">
+        <p>Reserve a table, ask for today's special or just send us a message:</p>
+        <form action="{% url 'formsave' %}" method="post">
+            {% csrf_token %}
+            <input type="text" placeholder="enter your name" name="name">
+            <input type="text" placeholder="enter contact no." name="contact">
+            <input type="number" placeholder="how many people" name="people">
+            <textarea cols="15" rows="5" placeholder="Message" name="message"></textarea>
+            <button> send message </button>
+        </form>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchForm = document.getElementById('searchForm');
+
+        searchForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const formData = new FormData(this);
+            const searchValue = formData.get('servicename');
+
+            if (searchValue.trim() !== '') {
+                window.location.href = `/services/?servicename=${searchValue}`;
+            }
+        });
+    });
+</script>
+
+{% endblock %}

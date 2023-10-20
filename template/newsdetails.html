@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ newsdetails.news_title }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .heading {
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .news-image {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd; /* Add a border around the image */
+            border-radius: 4px; /* Optional: Add a border-radius for rounded corners */
+        }
+        .news-desc {
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .source {
+            font-style: italic;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="heading">{{ newsdetails.news_title }}</h1>
+        <div class="row">
+            <div class="col-md-6">
+                {% if newsdetails.news_image != Null %}
+                <img src="/media/{{ newsdetails.news_image }}" class="news-image">
+                <p class="source">Image Source:</p>
+                {% endif %}
+            </div>
+            <div class="col-md-6">
+                <div class="news-desc">
+                    {{ newsdetails.news_desc | safe }}
+                </div>
+                <p class="source">Source:</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

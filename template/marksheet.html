@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marksheet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Marksheet</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="subject1">Subject 1</label>
+                    <input type="number" class="form-control" name="subject1" required>
+                </div><br>
+                <div class="form-group col-md-6">
+                    <label for="subject2">Subject 2</label>
+                    <input type="number" class="form-control" name="subject2" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="subject3">Subject 3</label>
+                    <input type="number" class="form-control" name="subject3" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="subject4">Subject 4</label>
+                    <input type="number" class="form-control" name="subject4" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="subject5">Subject 5</label>
+                <input type="number" class="form-control" name="subject5" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Generate Marksheet</button>
+        </form>
+        
+        <!-- Marksheet Section -->
+        {% if total is not None and percentage is not None and division is not None %}
+            <div class="mt-4">
+                <h2>Marksheet</h2>
+                <div class="form-group">
+                    <label for="total">Total</label>
+                    <input type="text" class="form-control" id="total" value="{{total}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="percentage">Percentage</label>
+                    <input type="text" class="form-control" id="percentage" value="{{percentage}}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="division">Division</label>
+                    <input type="text" class="form-control" id="division" value="{{division}}" readonly>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

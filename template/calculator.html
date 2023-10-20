@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .calculator-container {
+            max-width: 400px;
+            margin: auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .form-control {
+            text-align: right;
+            border: none;
+            border-bottom: 2px solid #007bff;
+            border-radius: 0;
+            box-shadow: none;
+            font-size: 24px;
+        }
+
+        .btn {
+            font-size: 18px;
+            min-width: 60px;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .result {
+            font-size: 24px;
+            font-weight: bold;
+            border: none;
+            text-align: right;
+            background: transparent;
+            outline: none;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator-container">
+        <h1 class="mb-4">Calculator</h1>
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" name="num1" required class="form-control" aria-label="Value1">
+            </div>
+            <div class="form-group">
+                <select name="option" class="form-control" aria-label="Operation">
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                    <option value="×">×</option>
+                    <option value="÷">÷</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="num2" required class="form-control" aria-label="Value2">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Calculate</button>
+        </form>
+        <input type="text" value="{{c}}" class="result" readonly>
+    </div>
+</body>
+</html>
